@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 
 static const int width = 800;
-static const int height = 600;
+static const int height = 800;
 
 int main(int argc, char **argv)
 {
