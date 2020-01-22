@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <SDL2/SDL.h>
+#include <math.h>
+
+#define WINDOW_W 20
+#define WINDOW_H 20
+#define PRECISION 0.001
+#define PI 3.14159265
+
+static const int width = 1120;
+static const int height =600;
+
+int main(int argc, char **argv)
+{
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+    SDL_Texture *texture1 = NULL;
+    SDL_Texture *texture2 = NULL;
+
+
+    SDL_Init(SDL_INIT_VIDEO);
+    if (SDL_Init(SDL_INIT_VIDEO) == -1)
+    {
+        fprintf(stderr, "Erreur d'initialisation de la SDL : %s\n", SDL_GetError());
+        exit(EXIT_FAILURE);
+    }
+
+    //******************window*********************************************************
+    window = SDL_CreateWindow("Projet Algo",50,50, width, height, SDL_WINDOW_RESIZABLE);
+    if (window == NULL)
+    {
+        printf("Erreur lors de la creation d'une fenetre : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+    //*************renderer*********************************************************************
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if(renderer == NULL)
+    {
+        printf("Erreur lors de la creation d'un renderer : %s",SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+    // *****texture*********************************************************************************
+    texture1 = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 300, 300);
+    texture2 = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 480, 400);
+    if(NULL == texture1)
+    {
+        fprintf(stderr, "Erreur SDL_CreateTexture : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
+
+      //On met le fond en blanc
+    //SDL_SetRenderDrawColor(renderer,255,255,255,255);
+    //SDL_RenderClear(renderer);
+
+    //********************************dessiner sur la texture1*********************************
+
+     SDL_Rect rect = {100, 100, 100, 100}, dst = {0, 0, 0, 0};
+     SDL_Rect rect1 = {200, 200, 100, 100};
+     SDL_Color rouge = {255, 0, 0, 255}, bleu = {0, 0, 255, 255};
+
+     SDL_SetRenderTarget(renderer, texture1); // La texture est la cible de rendu, maintenant, on dessine sur la texture.
+     SDL_SetRenderDrawColor(renderer, bleu.r, bleu.g, bleu.b, bleu.a);
+     SDL_RenderClear(renderer);
+     SDL_SetRenderDrawColor(renderer, rouge.r, rouge.g, rouge.b, rouge.a);
+     SDL_RenderFillRect(renderer, &rect); /* On dessine un rectangle rouge sur la texture. */
+
+     SDL_SetRenderTarget(renderer, NULL); /* Le renderer est la cible de rendu. */
+
+     /* On récupère les dimensions de la texture, on la copie sur le renderer
+       et on met à jour l’écran. */
+     SDL_QueryTexture(texture1, NULL, NULL, &dst.w, &dst.h);
+     SDL_RenderCopy(renderer, texture1, NULL, &dst);
+
+     //**********************************Dessiner sur la texture 2********************************
+
+     SDL_Rect dst1 = {320, 100, 0, 0};
+
+     SDL_SetRenderTarget(renderer, texture2); // La texture est la cible de rendu, maintenant, on dessine sur la texture.
+     SDL_SetRenderDrawColor(renderer,255,255,255,255);
+     SDL_RenderClear(renderer);
+
+     SDL_SetRenderTarget(renderer, NULL); /* Le renderer est la cible de rendu. */
+
+     /* On récupère les dimensions de la texture, on la copie sur le renderer
+       et on met à jour l’écran. */
+     SDL_QueryTexture(texture2, NULL, NULL, &dst1.w, &dst1.h);
+     SDL_RenderCopy(renderer, texture2, NULL, &dst1);
+
+
+    //**********************************affichage**************************************
+    bool running = true;
+    SDL_Event event;
+    while(running)
+    {
+        // Process events
+        while(SDL_PollEvent(&event))
+        {
+            if(event.type == SDL_QUIT)
+            {
+                running = false;
+            }
+        }
+
+
+        SDL_RenderPresent(renderer);
+    }
+
+
+    //*******************************liberation de la mémoire*************************************
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_DestroyTexture(texture1);
+    SDL_DestroyTexture(texture1);
+    SDL_Quit();
+
+    return 0;
+}

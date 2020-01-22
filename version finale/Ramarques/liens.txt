@@ -1,0 +1,15 @@
+https://fr.wikibooks.org/wiki/Programmation_avec_la_SDL/Les_fen%C3%AAtres
+https://caveofprogramming.com/guest-posts/event-handling-sdl.html
+https://fr.wikibooks.org/wiki/Programmation_avec_la_SDL/Le_renderer
+https://devopssec.fr/article/gestion-des-differents-evenements-sdl-2
+https://zestedesavoir.com/tutoriels/1014/utiliser-la-sdl-en-langage-c/les-textures-et-les-images/
+https://devopssec.fr/article/gestion-des-differents-evenements-sdl-2
+http://gigi.nullneuron.net/gigilabs/displaying-an-image-in-an-sdl2-window/
+https://dzone.com/articles/handling-keyboard-and-mouse-events-in-sdl2
+http://www.lazyfoo.net/SDL_tutorials/
+https://wiki.libsdl.org/Tutorials/TextInput
+https://wiki.libsdl.org/SDL_Scancode
+https://loka.developpez.com/tutoriel/sdl/evenements/
+https://www.youtube.com/watch?v=Cw9jRLqkg3Y installation ttf
+http://gigi.nullneuron.net/gigilabs/displaying-text-in-sdl2-with-sdl_ttf/
+https://books.google.fr/books?id=7eAPUdU3hRUC&pg=PA114&lpg=PA114&dq=SDL_GetKeyName(+key-%3Ekeysym.sym+)+SDL2&source=bl&ots=wXdyMGA71R&sig=ACfU3U3Eo9B8osGLC7qphxsBP8TLacI06Q&hl=fr&sa=X&ved=2ahUKEwj3x5KJp43nAhXLAGMBHR5UCw0Q6AEwCHoECAoQAQ#v=onepage&q&f=false

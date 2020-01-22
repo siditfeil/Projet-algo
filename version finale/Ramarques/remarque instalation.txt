@@ -1,0 +1,7 @@
+Project-->properties-->Project build options(en bas à gauche) -->Search directories 
+dans Compiler mettre add puis le lien :C:\Users\pc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\CodeBlocks\SDL2-2.0.10\i686-w64-mingw32\include
+puis dans linker C:\Users\pc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\CodeBlocks\SDL2-2.0.10\i686-w64-mingw32\lib
+
+Project-->properties-->Project build options(en bas à gauche) -->linker settings-->other linker options  il faut mettre -lmingw32 -lSDL2main -lSDL2
+
+et copier le fichier SDL2.dll dans le projet (mais je sais pas si on devrait le faire tout temps)

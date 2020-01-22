@@ -1,0 +1,38 @@
+SDL_Event event;
+       if (SDL_PollEvent(&event)) {
+            switch (event.type) {
+                case SDL_QUIT:
+                    /* Quit */
+                    //done = SDL_TRUE;
+                    break;
+                case SDL_TEXTINPUT:
+                    /* Add new text onto the end of our text */
+                    strcat(src, event.text.text);
+                    break;
+            }
+        }
+
+
+/*string recupere_text()
+{
+    SDL_StartTextInput();
+    string in;
+    bool running = true;
+
+while ( running ) {
+	SDL_Event ev;
+	while ( SDL_PollEvent( &ev ) ) {
+		if ( ev.type == SDL_TEXTINPUTEVENT ) {
+			in += ev.text.text;
+			cout << " > " << in << endl;
+		} else if ( ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_BACKSPACE && in.size()) {
+			in.pop_back();
+			cout << " > " << in << endl;
+		} eles if ( ev.type == SDL_QUIT ) {
+			running = false;
+		}
+	}
+    }
+    SDL_StopTextInput();
+    return in;
+}*/
